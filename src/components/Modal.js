@@ -1,8 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "@emotion/styled";
+import uuid from "uuid/v4";
 
-const Modal = () => {
+const ModalContainer = styled.div`
+  border: 1px solid red;
+  margin: 1rem;
+`;
+
+const ModalForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+
+  & input {
+    width: 300px;
+    padding: 0.5rem;
+    /* margin: 0.5rem; */
+  }
+
+  & button {
+    margin-top: 1rem;
+    padding: 0.2rem 0.5rem;
+  }
+`;
+
+const Modal = ({ setNotes }) => {
+  const [note, setNote] = useState({
+    title: "",
+    body: "",
+    id: ""
+  });
+
+  const { title, body, id } = note;
+
+  const handleChange = e => {
+    setNote({
+      ...note,
+      [e.target.name]: e.target.value
+    });
+    console.log(note);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    note.id = uuid();
+    setNotes(note);
+  };
+
   return (
-    <h3>Hi! I'm a MODAL, If you focus on Form, or a Note, I will appear!</h3>
+    <ModalContainer>
+      <ModalForm onSubmit={handleSubmit}>
+        <label htmlFor="modal-title">
+          <input
+            type="text"
+            id="modal-title"
+            placeholder="Title..."
+            name="title"
+            value={title}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="modal-body">
+          <input
+            type="text"
+            id="modal-body"
+            placeholder="Create a note..."
+            name="body"
+            value={body}
+            onChange={handleChange}
+          />
+        </label>
+        <div>
+          <button>Delete</button>
+          <button type="submit">Close</button>
+        </div>
+      </ModalForm>
+    </ModalContainer>
   );
 };
 

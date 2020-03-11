@@ -11,7 +11,7 @@ const NoteBodyInput = styled.input`
 const Form = () => {
   return (
     <FormContainer>
-      <label for="note-body">
+      <label htmlFor="note-body">
         <NoteBodyInput
           type="text"
           id="note-body"
