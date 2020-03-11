@@ -20,8 +20,8 @@ function App() {
         <Title title="myNotes" />
       </Header>
       <Main>
-        <Modal />
         <Form />
+        <Modal />
         <List />
       </Main>
     </>

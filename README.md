@@ -1,3 +1,3 @@
-# Cryptocoins App
+# myNotes App
 
-## Status: Not finished
+## Status: Starting out!
