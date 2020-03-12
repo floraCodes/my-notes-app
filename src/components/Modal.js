@@ -1,91 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import uuid from "uuid/v4";
 
-import Error from "./Error";
+const ModalContainer = styled.form``;
 
-const ModalContainer = styled.div`
-  border: 1px solid red;
-  margin: 1rem;
+const NoteBodyInput = styled.input`
+  width: 300px;
+  padding: 0.5rem;
 `;
 
-const ModalForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-
-  & input {
-    width: 300px;
-    padding: 0.5rem;
-    /* margin: 0.5rem; */
-  }
-
-  & button {
-    margin-top: 1rem;
-    padding: 0.2rem 0.5rem;
-  }
-`;
-
-const Modal = ({ addNewNote }) => {
-  const [note, setNote] = useState({
-    title: "",
-    body: "",
-    id: ""
-  });
-  const { title, body } = note;
-
-  const [error, setError] = useState(false);
-
-  const handleChange = e => {
-    setNote({
-      ...note,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (!title.trim() || !body.trim()) {
-      setError(true);
-      return;
-    }
-    setError(false);
-    note.id = uuid();
-    addNewNote(note);
-  };
-
+const Modal = () => {
   return (
     <ModalContainer>
-      {error ? <Error message="You must complete all fields" /> : null}
-      <ModalForm onSubmit={handleSubmit}>
-        <label htmlFor="modal-title">
-          <input
-            type="text"
-            id="modal-title"
-            placeholder="Title..."
-            name="title"
-            value={title}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="modal-body">
-          <input
-            type="text"
-            id="modal-body"
-            placeholder="Create a note..."
-            name="body"
-            value={body}
-            onChange={handleChange}
-          />
-        </label>
-        <div>
-          <button>Delete</button>
-          <button type="submit">Close</button>
-        </div>
-      </ModalForm>
+      <label htmlFor="note-body">
+        <NoteBodyInput
+          type="text"
+          id="note-body"
+          placeholder="Create a note..."
+        />
+      </label>
     </ModalContainer>
   );
 };
 
 export default Modal;
+
+//I modified this line in Form.js

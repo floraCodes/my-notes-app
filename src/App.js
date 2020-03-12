@@ -26,9 +26,10 @@ function App() {
         <Title title="myNotes" />
       </Header>
       <Main>
-        <Form />
-        <Modal addNewNote={addNewNote} />
-        <List />
+        <Modal />
+        <Form addNewNote={addNewNote} />
+
+        <List notes={notes} />
       </Main>
     </>
   );
