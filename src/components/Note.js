@@ -1,11 +1,14 @@
 import React from "react";
 // import styled from "@emotion/styled";
 
-const Note = () => {
+const Note = ({ note }) => {
+  const { title, body, id } = note;
   return (
     <>
-      <div>This is a note</div>
-      <div>This is another note</div>
+      <div id={id}>
+        <h3>{title}</h3>
+        <p>{body}</p>
+      </div>
     </>
   );
 };
