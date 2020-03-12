@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Title from "./components/Title";
 import Form from "./components/Form";
@@ -14,6 +14,12 @@ const Main = styled.main`
 `;
 
 function App() {
+  const [notes, setNotes] = useState([]);
+
+  const addNewNote = note => {
+    setNotes([...notes, note]);
+  };
+
   return (
     <>
       <Header>
@@ -21,7 +27,7 @@ function App() {
       </Header>
       <Main>
         <Form />
-        <Modal />
+        <Modal addNewNote={addNewNote} />
         <List />
       </Main>
     </>
