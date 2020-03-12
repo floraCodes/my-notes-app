@@ -63,6 +63,14 @@ const Form = ({ addNewNote }) => {
     });
   };
 
+  const handleCancel = () => {
+    setNote({
+      title: "",
+      body: "",
+      id: ""
+    });
+  };
+
   return (
     <FormContainer>
       {error ? <Error message="You must complete all fields" /> : null}
@@ -88,8 +96,10 @@ const Form = ({ addNewNote }) => {
           />
         </label>
         <div>
-          <button type="button">Delete</button>
-          <button type="submit">Close</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
+          <button type="submit">Submit</button>
         </div>
       </FormElement>
     </FormContainer>

@@ -52,8 +52,6 @@ function App() {
         <Title title="myNotes" />
       </Header>
       <Main>
-        <Form addNewNote={addNewNote} />
-        <List notes={notes} deleteNote={deleteNote} editNote={editNote} />
         {editing ? (
           <Modal
             currentNote={currentNote}
@@ -61,6 +59,8 @@ function App() {
             setEditing={setEditing}
           />
         ) : null}
+        <Form addNewNote={addNewNote} />
+        <List notes={notes} deleteNote={deleteNote} editNote={editNote} />
       </Main>
     </>
   );
