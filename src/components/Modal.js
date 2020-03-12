@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import uuid from "uuid/v4";
 
+import Error from "./Error";
+
 const ModalContainer = styled.div`
   border: 1px solid red;
   margin: 1rem;
@@ -30,8 +32,9 @@ const Modal = ({ addNewNote }) => {
     body: "",
     id: ""
   });
-
   const { title, body } = note;
+
+  const [error, setError] = useState(false);
 
   const handleChange = e => {
     setNote({
@@ -42,12 +45,19 @@ const Modal = ({ addNewNote }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (!title.trim() || !body.trim()) {
+      setError(true);
+      return;
+    }
+    setError(false);
     note.id = uuid();
     addNewNote(note);
   };
 
   return (
     <ModalContainer>
+      {error ? <Error message="You must complete all fields" /> : null}
       <ModalForm onSubmit={handleSubmit}>
         <label htmlFor="modal-title">
           <input
