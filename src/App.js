@@ -15,6 +15,11 @@ const Main = styled.main`
 
 function App() {
   const [notes, setNotes] = useState([]);
+
+  const addNewNote = note => {
+    setNotes([...notes, note]);
+  };
+
   return (
     <>
       <Header>
@@ -22,7 +27,7 @@ function App() {
       </Header>
       <Main>
         <Form />
-        <Modal notes={notes} setNotes={setNotes} />
+        <Modal addNewNote={addNewNote} />
         <List />
       </Main>
     </>

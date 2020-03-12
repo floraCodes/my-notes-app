@@ -24,27 +24,26 @@ const ModalForm = styled.form`
   }
 `;
 
-const Modal = ({ setNotes }) => {
+const Modal = ({ addNewNote }) => {
   const [note, setNote] = useState({
     title: "",
     body: "",
     id: ""
   });
 
-  const { title, body, id } = note;
+  const { title, body } = note;
 
   const handleChange = e => {
     setNote({
       ...note,
       [e.target.name]: e.target.value
     });
-    console.log(note);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     note.id = uuid();
-    setNotes(note);
+    addNewNote(note);
   };
 
   return (
