@@ -8,7 +8,7 @@ const NoteBodyInput = styled.input`
   padding: 0.5rem;
 `;
 
-const Modal = () => {
+const Modal = ({ notes }) => {
   return (
     <ModalContainer>
       <label htmlFor="note-body">
@@ -23,5 +23,3 @@ const Modal = () => {
 };
 
 export default Modal;
-
-//I modified this line in Form.js

@@ -37,22 +37,30 @@ const Form = ({ addNewNote }) => {
   const [error, setError] = useState(false);
 
   const handleChange = e => {
+    const { name, value } = e.target;
+
     setNote({
       ...note,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!title.trim() || !body.trim()) {
+    if (!title || !body) {
       setError(true);
       return;
     }
     setError(false);
     note.id = uuid();
     addNewNote(note);
+
+    setNote({
+      title: "",
+      body: "",
+      id: ""
+    });
   };
 
   return (
@@ -80,7 +88,7 @@ const Form = ({ addNewNote }) => {
           />
         </label>
         <div>
-          <button>Delete</button>
+          <button type="button">Delete</button>
           <button type="submit">Close</button>
         </div>
       </FormElement>

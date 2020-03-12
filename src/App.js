@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import List from "./components/List";
-import Modal from "./components/Modal";
+// import Modal from "./components/Modal";
 
 const Header = styled.header`
   font-size: 1.5rem;
@@ -20,16 +20,20 @@ function App() {
     setNotes([...notes, note]);
   };
 
+  const deleteNote = id => {
+    setNotes(notes.filter(note => note.id !== id));
+  };
+
   return (
     <>
       <Header>
         <Title title="myNotes" />
       </Header>
       <Main>
-        <Modal />
+        {/* <Modal notes={notes} /> */}
         <Form addNewNote={addNewNote} />
 
-        <List notes={notes} />
+        <List notes={notes} deleteNote={deleteNote} />
       </Main>
     </>
   );

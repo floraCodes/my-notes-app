@@ -4,15 +4,17 @@ import styled from "@emotion/styled";
 
 const ListContainer = styled.div`
   border: 1px solid black;
+  display: flex;
 `;
 
-const List = ({ notes }) => {
+const List = ({ notes, deleteNote }) => {
   return (
     <ListContainer>
-      <h3>This will be the container of notes:</h3>
-      {notes.map(note => (
-        <Note note={note} key={note.id} />
-      ))}
+      {notes.length
+        ? notes.map(note => (
+            <Note note={note} key={note.id} deleteNote={deleteNote} />
+          ))
+        : null}
     </ListContainer>
   );
 };
