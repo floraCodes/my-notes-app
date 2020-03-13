@@ -30,6 +30,8 @@ const FormElement = styled.form`
     width: 100%;
     padding: 0.5rem;
     border: none;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+      "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   }
 
   & button {
