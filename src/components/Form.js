@@ -12,12 +12,24 @@ const FormContainer = styled.div`
 const FormElement = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   margin: 1rem;
+  width: 400px;
+  border: 2px solid green;
 
   & input {
-    width: 300px;
+    box-sizing: border-box;
+    width: 100%;
     padding: 0.5rem;
-    /* margin: 0.5rem; */
+    border: none;
+    font-size: 1.2rem;
+  }
+  & textarea.note-body {
+    box-sizing: border-box;
+    min-height: 100px;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
   }
 
   & button {
@@ -79,6 +91,7 @@ const Form = ({ addNewNote }) => {
           <input
             type="text"
             id="note-title"
+            className="note-title"
             placeholder="Title..."
             name="title"
             value={title}
@@ -86,9 +99,10 @@ const Form = ({ addNewNote }) => {
           />
         </label>
         <label htmlFor="note-body">
-          <input
+          <textarea
             type="text"
             id="note-body"
+            className="note-body"
             placeholder="Create a note..."
             name="body"
             value={body}

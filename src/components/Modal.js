@@ -50,6 +50,9 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
   return (
     <ModalContainer>
       <ModalContent onSubmit={handleSubmit}>
+        <button type="button" onClick={handleCloseModal}>
+          X
+        </button>
         <label htmlFor="title">
           <ModalInput
             type="text"
@@ -72,9 +75,6 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
         </label>
         <div>
           <button type="submit">Submit Change</button>
-          <button type="button" onClick={handleCloseModal}>
-            Cancel
-          </button>
         </div>
       </ModalContent>
     </ModalContainer>
