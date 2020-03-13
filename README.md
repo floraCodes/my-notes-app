@@ -2,24 +2,27 @@
 
 ## Status: Styling!
 
-> ~~Create basic components:~~
+1. ~~Create basic components:~~
 
-    - Form
-    - Note
-    - List of notes
-    - Modal form
+   - Form: to get user input.
+   - Note: individual note with title, body and edit/delete buttons.
+   - List of notes
+   - Modal form: to edit a note.
 
-> ~~Create basic functionality:~~
+2. ~~Create basic functionality:~~
 
-    - Create a note
-    - Display notes
-    - Edit/Update note
-    - Delete a note
+   - Create a note
+   - Display notes
+   - Edit/Update note
+   - Delete a note
 
-> Style App w/ Emotion Styled Components
+3. Style App w/ Emotion and XMasonry
 
-> Dark mode
+   - [Emotion](https://github.com/emotion-js/emotion)
+   - [XMasonry](https://github.com/ZitRos/react-xmasonry)
 
-> Allow drag and drop notes
+4. Dark mode (comming soon)
 
-> Make Todo lists inside the notes
+5. Allow drag and drop notes (comming soon)
+
+6. Make Todo lists inside the notes (comming soon)
