@@ -15,9 +15,35 @@ const Main = styled.main`
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [currentNote, setCurrentNote] = useState({
+    title: "",
+    body: "",
+    id: ""
+  });
 
   const addNewNote = note => {
     setNotes([...notes, note]);
+  };
+
+  const deleteNote = id => {
+    setNotes(notes.filter(note => note.id !== id));
+  };
+
+  const editNote = note => {
+    const { title, body, id } = note;
+
+    setEditing(true);
+    setCurrentNote({
+      title: title,
+      body: body,
+      id: id
+    });
+  };
+
+  const updateNote = (id, updatedNote) => {
+    setEditing(false);
+    setNotes(notes.map(note => (note.id === id ? updatedNote : note)));
   };
 
   return (
@@ -26,9 +52,15 @@ function App() {
         <Title title="myNotes" />
       </Header>
       <Main>
-        <Form />
-        <Modal addNewNote={addNewNote} />
-        <List />
+        {editing ? (
+          <Modal
+            currentNote={currentNote}
+            updateNote={updateNote}
+            setEditing={setEditing}
+          />
+        ) : null}
+        <Form addNewNote={addNewNote} />
+        <List notes={notes} deleteNote={deleteNote} editNote={editNote} />
       </Main>
     </>
   );

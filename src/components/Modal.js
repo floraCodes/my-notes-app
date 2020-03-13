@@ -1,78 +1,72 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import uuid from "uuid/v4";
-
-import Error from "./Error";
 
 const ModalContainer = styled.div`
-  border: 1px solid red;
-  margin: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(229, 229, 229, 0.5);
 `;
 
-const ModalForm = styled.form`
+const ModalContent = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 1rem;
-
-  & input {
-    width: 300px;
-    padding: 0.5rem;
-    /* margin: 0.5rem; */
-  }
-
-  & button {
-    margin-top: 1rem;
-    padding: 0.2rem 0.5rem;
-  }
+  margin: 2rem;
+  padding: 1rem;
+  border: 1px pink solid;
+  background-color: #fff;
 `;
 
-const Modal = ({ addNewNote }) => {
-  const [note, setNote] = useState({
-    title: "",
-    body: "",
-    id: ""
-  });
-  const { title, body } = note;
+const ModalInput = styled.input`
+  width: 300px;
+  padding: 0.5rem;
+`;
 
-  const [error, setError] = useState(false);
+const Modal = ({ currentNote, updateNote, setEditing }) => {
+  const [note, setNote] = useState(currentNote);
+  const { title, body, id } = note;
 
   const handleChange = e => {
+    const { name, value } = e.target;
+    console.log(note);
     setNote({
       ...note,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    updateNote(id, note);
+  };
 
-    if (!title.trim() || !body.trim()) {
-      setError(true);
-      return;
-    }
-    setError(false);
-    note.id = uuid();
-    addNewNote(note);
+  const handleCloseModal = e => {
+    setEditing(false);
   };
 
   return (
     <ModalContainer>
-      {error ? <Error message="You must complete all fields" /> : null}
-      <ModalForm onSubmit={handleSubmit}>
-        <label htmlFor="modal-title">
-          <input
+      <ModalContent onSubmit={handleSubmit}>
+        <button type="button" onClick={handleCloseModal}>
+          X
+        </button>
+        <label htmlFor="title">
+          <ModalInput
             type="text"
-            id="modal-title"
+            id="title"
             placeholder="Title..."
             name="title"
             value={title}
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="modal-body">
-          <input
+        <label htmlFor="body">
+          <ModalInput
             type="text"
-            id="modal-body"
+            id="body"
             placeholder="Create a note..."
             name="body"
             value={body}
@@ -80,10 +74,9 @@ const Modal = ({ addNewNote }) => {
           />
         </label>
         <div>
-          <button>Delete</button>
-          <button type="submit">Close</button>
+          <button type="submit">Submit Change</button>
         </div>
-      </ModalForm>
+      </ModalContent>
     </ModalContainer>
   );
 };
