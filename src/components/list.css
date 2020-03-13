@@ -1,11 +1,17 @@
-.my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
-  display: flex;
-  margin-left: -30px; /* gutter size offset */
-  width: auto;
+@keyframes comeIn {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
-  background-clip: padding-box;
+
+.xmasonry .xblock {
+  animation: comeIn ease 0.5s;
+  animation-iteration-count: 1;
+  transition: left 0.3s ease, top 0.3s ease;
 }
