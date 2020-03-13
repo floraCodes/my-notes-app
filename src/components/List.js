@@ -3,10 +3,14 @@ import Note from "./Note";
 import styled from "@emotion/styled";
 
 const ListContainer = styled.div`
-  border: 1px solid black;
-  display: flex;
-  min-height: 100px;
-  min-width: 600px;
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 17rem);
+  justify-content: center;
+  grid-auto-flow: dense;
+  grid-auto-rows: minmax(150px, auto);
+
+  align-items: start;
 `;
 
 const List = ({ notes, deleteNote, editNote }) => {

@@ -10,7 +10,12 @@ const Header = styled.header`
   text-align: center;
 `;
 const Main = styled.main`
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 70vw;
+  margin: 0 auto;
+  border: 5px solid pink;
+  padding: 2rem;
 `;
 
 function App() {
