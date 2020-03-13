@@ -5,7 +5,11 @@ import uuid from "uuid/v4";
 import Error from "./Error";
 
 const FormContainer = styled.div`
-  border: 1px solid red;
+  justify-self: center;
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 400px;
+  border: 5px solid red;
   margin: 1rem;
 `;
 
@@ -13,25 +17,30 @@ const FormElement = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 1rem;
-  width: 400px;
-  border: 2px solid green;
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 400px;
+  border: 1px solid gray;
+  border-radius: 15px;
 
   & input {
-    box-sizing: border-box;
     width: 100%;
     padding: 0.5rem;
     border: none;
     font-size: 1.2rem;
+    background-color: transparent;
   }
   & textarea.note-body {
-    box-sizing: border-box;
-    min-height: 100px;
+    min-height: 50px;
     width: 100%;
     padding: 0.5rem;
     border: none;
+    resize: none;
     font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
       "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+  & .buttonContainer {
+    text-align: right;
   }
 
   & button {
@@ -62,7 +71,7 @@ const Form = ({ addNewNote }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!title || !body) {
+    if (!title && !body) {
       setError(true);
       return;
     }
@@ -111,11 +120,11 @@ const Form = ({ addNewNote }) => {
             onChange={handleChange}
           />
         </label>
-        <div>
+        <div className="buttonContainer">
           <button type="button" onClick={handleCancel}>
-            Cancel
+            X
           </button>
-          <button type="submit">Submit</button>
+          <button type="submit">Create!</button>
         </div>
       </FormElement>
     </FormContainer>

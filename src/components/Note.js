@@ -2,10 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const NoteElement = styled.div`
-  border: 1px solid green;
+  border: 5px solid lightgreen;
   margin: 1rem;
-  padding: 1rem;
-  min-width: 100px;
+  padding: 0.5rem;
+  min-width: 15rem;
 `;
 
 const Note = ({ note, deleteNote, editNote }) => {

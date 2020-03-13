@@ -31,7 +31,7 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log(note);
+
     setNote({
       ...note,
       [name]: value
