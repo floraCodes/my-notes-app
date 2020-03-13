@@ -2,14 +2,14 @@
 
 ## Status: Styling!
 
-> ~~ Create basic components: ~~
+> ~~Create basic components:~~
 
     - Form
     - Note
     - List of notes
     - Modal form
 
-> ~~ Create basic functionality: ~~
+> ~~Create basic functionality:~~
 
     - Create a note
     - Display notes
