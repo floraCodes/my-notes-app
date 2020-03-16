@@ -22,6 +22,9 @@ const NoteElement = styled.div`
   & .body {
     padding: 0.7rem 0 1rem 0;
   }
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const ButtonsContainer = styled.div`

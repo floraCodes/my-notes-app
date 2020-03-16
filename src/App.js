@@ -16,9 +16,10 @@ const Main = styled.main`
   grid-template-columns: 1fr;
   max-width: 70vw;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
 
   @media (max-width: 600px) {
+    padding: 0 1rem;
     max-width: 95vw;
   }
 `;
