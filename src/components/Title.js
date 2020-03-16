@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Icon from "./NotesIcon.png";
+import Icon from "../assets/NotesIcon.png";
 
 const TitleElement = styled.h1`
   font-size: 4rem;

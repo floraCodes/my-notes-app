@@ -8,13 +8,8 @@ const List = ({ notes, deleteNote, editNote }) => {
     <XMasonry>
       {notes.length
         ? notes.map(note => (
-            <XBlock>
-              <Note
-                note={note}
-                key={note.id}
-                deleteNote={deleteNote}
-                editNote={editNote}
-              />
+            <XBlock key={note.id}>
+              <Note note={note} deleteNote={deleteNote} editNote={editNote} />
             </XBlock>
           ))
         : null}

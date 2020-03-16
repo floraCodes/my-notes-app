@@ -9,23 +9,73 @@ const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(229, 229, 229, 0.5);
+
+  & .modal-button {
+    margin-top: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    right: 1.1rem;
+    bottom: -1.1rem;
+    cursor: pointer;
+    color: #2c2c2c;
+    border-radius: 50%;
+    background-color: #27cb2d;
+    color: #fff;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+      0 2px 6px 2px rgba(60, 64, 67, 0.149);
+    border-radius: 50%;
+
+    & span {
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+  }
 `;
 
 const ModalContent = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  justify-content: flex-start;
+  height: 35vh;
+  width: 50vw;
+  max-width: 600px;
+  margin: 15vh auto;
   padding: 1rem;
-  border: 1px pink solid;
+  border-radius: 15px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+    0 2px 6px 2px rgba(60, 64, 67, 0.149);
   background-color: #fff;
+
+  & input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    background-color: transparent;
+  }
+
+  & .body-label {
+    height: 100%;
+  }
+  & textarea.modal-body {
+    justify-self: stretch;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    resize: none;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+      "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+  & input {
+    width: 300px;
+    padding: 0.5rem;
+  }
 `;
 
-const ModalInput = styled.input`
-  width: 300px;
-  padding: 0.5rem;
-`;
-
-const Modal = ({ currentNote, updateNote, setEditing }) => {
+const Modal = ({ currentNote, updateNote }) => {
   const [note, setNote] = useState(currentNote);
   const { title, body, id } = note;
 
@@ -43,18 +93,11 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
     updateNote(id, note);
   };
 
-  const handleCloseModal = e => {
-    setEditing(false);
-  };
-
   return (
     <ModalContainer>
-      <ModalContent onSubmit={handleSubmit}>
-        <button type="button" onClick={handleCloseModal}>
-          X
-        </button>
+      <ModalContent>
         <label htmlFor="title">
-          <ModalInput
+          <input
             type="text"
             id="title"
             placeholder="Title..."
@@ -63,8 +106,9 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="body">
-          <ModalInput
+        <label htmlFor="body" className="body-label">
+          <textarea
+            className="modal-body"
             type="text"
             id="body"
             placeholder="Create a note..."
@@ -73,9 +117,13 @@ const Modal = ({ currentNote, updateNote, setEditing }) => {
             onChange={handleChange}
           />
         </label>
-        <div>
-          <button type="submit">Submit Change</button>
-        </div>
+        <button
+          className="save-button modal-button"
+          type="button"
+          onClick={handleSubmit}
+        >
+          <span>✓</span>
+        </button>
       </ModalContent>
     </ModalContainer>
   );

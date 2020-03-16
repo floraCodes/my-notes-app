@@ -6,22 +6,22 @@ import Error from "./Error";
 
 const FormContainer = styled.div`
   justify-self: center;
-  margin: 0 auto;
+  margin: 2rem auto;
   width: 40vw;
   max-width: 400px;
-  border: 5px solid red;
-  margin: 1rem;
 `;
 
 const FormElement = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 0 auto;
   padding: 1rem;
   max-width: 400px;
-  border: 1px solid gray;
   border-radius: 15px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+    0 2px 6px 2px rgba(60, 64, 67, 0.149);
 
   & input {
     width: 100%;
@@ -31,7 +31,7 @@ const FormElement = styled.form`
     background-color: transparent;
   }
   & textarea.note-body {
-    min-height: 50px;
+    min-height: 4rem;
     width: 100%;
     padding: 0.5rem;
     border: none;
@@ -43,9 +43,26 @@ const FormElement = styled.form`
     text-align: right;
   }
 
-  & button {
+  & .create-button {
     margin-top: 1rem;
-    padding: 0.2rem 0.5rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    right: 1.1rem;
+    bottom: -1.1rem;
+    cursor: pointer;
+    color: #2c2c2c;
+    border-radius: 50%;
+    background-color: #3586e4;
+    color: #fff;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+      0 2px 6px 2px rgba(60, 64, 67, 0.149);
+
+    & span {
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
   }
 `;
 
@@ -86,17 +103,9 @@ const Form = ({ addNewNote }) => {
     });
   };
 
-  const handleCancel = () => {
-    setNote({
-      title: "",
-      body: "",
-      id: ""
-    });
-  };
-
   return (
     <FormContainer>
-      {error ? <Error message="You must complete all fields" /> : null}
+      {error ? <Error message="You must complete at least one field" /> : null}
       <FormElement onSubmit={handleSubmit}>
         <label htmlFor="note-title">
           <input
@@ -120,12 +129,9 @@ const Form = ({ addNewNote }) => {
             onChange={handleChange}
           />
         </label>
-        <div className="buttonContainer">
-          <button type="button" onClick={handleCancel}>
-            X
-          </button>
-          <button type="submit">Create!</button>
-        </div>
+        <button className="create-button" type="submit">
+          <span>+</span>
+        </button>
       </FormElement>
     </FormContainer>
   );
