@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import List from "./components/List";
 import Modal from "./components/Modal";
+
+const LOCAL_STORAGE_KEY = "storage-myNotes";
 
 const Header = styled.header`
   font-size: 1.5rem;
@@ -14,7 +16,6 @@ const Main = styled.main`
   grid-template-columns: 1fr;
   max-width: 70vw;
   margin: 0 auto;
-  border: 5px solid pink;
   padding: 2rem;
 `;
 
@@ -26,6 +27,17 @@ function App() {
     body: "",
     id: ""
   });
+
+  useEffect(() => {
+    const storageNotes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageNotes) {
+      setNotes(storageNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
+  }, [notes]);
 
   const addNewNote = note => {
     setNotes([...notes, note]);
