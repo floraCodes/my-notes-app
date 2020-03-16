@@ -16,7 +16,7 @@
    - Edit/Update note
    - Delete a note
 
-3. Style App w/ Emotion and XMasonry
+3. ~~Style App w/ Emotion and XMasonry~~
 
    - [Emotion](https://github.com/emotion-js/emotion)
    - [XMasonry](https://github.com/ZitRos/react-xmasonry)
