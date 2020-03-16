@@ -73,6 +73,10 @@ const ModalContent = styled.form`
     width: 300px;
     padding: 0.5rem;
   }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const Modal = ({ currentNote, updateNote }) => {

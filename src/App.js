@@ -17,6 +17,10 @@ const Main = styled.main`
   max-width: 70vw;
   margin: 0 auto;
   padding: 2rem;
+
+  @media (max-width: 600px) {
+    max-width: 95vw;
+  }
 `;
 
 function App() {

@@ -9,6 +9,9 @@ const FormContainer = styled.div`
   margin: 2rem auto;
   width: 40vw;
   max-width: 400px;
+  @media (max-width: 600px) {
+    width: 95%;
+  }
 `;
 
 const FormElement = styled.form`
