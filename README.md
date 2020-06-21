@@ -1,6 +1,6 @@
 # myNotes App
 
-## Status: Styling!
+## Status: MVP finished!
 
 1. ~~Create basic components:~~
 
