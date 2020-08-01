@@ -1,6 +1,6 @@
 import React from 'react';
 import './note.css';
-import { NoteElement, ButtonsContainer, NoteButton } from './noteCss';
+import { NoteElement, ButtonsContainer, NoteButton, Title } from './noteCss';
 
 const Note = ({ note, deleteNote, editNote }) => {
   const { title, body, id } = note;
@@ -16,15 +16,17 @@ const Note = ({ note, deleteNote, editNote }) => {
   return (
     <NoteElement id={id} className="note">
       <div>
-        <h3 className="title">{title}</h3>
-        <p className="body">{body}</p>
-        <ButtonsContainer className="buttons" role="toolbox">
+        <Title className="title">{title}</Title>
+        <p>{body}</p>
+        <ButtonsContainer className="buttons">
           <NoteButton
+            aria-label="Edit Note Button"
             className="edit-button"
             role="button"
             onClick={handleEdit}
           ></NoteButton>
           <NoteButton
+            aria-label="Delete Note Button"
             className="delete-button"
             role="button"
             onClick={handleDelete}
