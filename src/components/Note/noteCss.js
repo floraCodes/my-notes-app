@@ -17,9 +17,6 @@ export const NoteElement = styled.div`
     }
   }
 
-  & .body {
-    padding: 0.7rem 0 1rem 0;
-  }
   @media (max-width: 600px) {
     width: 90%;
   }
@@ -45,4 +42,8 @@ export const NoteButton = styled.div`
   background-size: 20px 20px;
   border-radius: 50%;
   cursor: pointer;
+`;
+
+export const Title = styled.h4`
+  padding: 0.7rem 0 1rem 0;
 `;
