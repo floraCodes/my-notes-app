@@ -1,36 +1,20 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import Title from "./components/Title";
-import Form from "./components/Form";
-import List from "./components/List";
-import Modal from "./components/Modal";
+import React, { useState, useEffect } from 'react';
+import Title from './components/Title';
+import Form from './components/Form';
+import List from './components/List';
+import Modal from './components/Modal';
+import { initialNotes } from './utils/initialNotes';
+import { Header, Main } from './appCss';
 
-const LOCAL_STORAGE_KEY = "storage-myNotes";
-
-const Header = styled.header`
-  font-size: 1.5rem;
-  text-align: center;
-`;
-const Main = styled.main`
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 70vw;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-
-  @media (max-width: 600px) {
-    padding: 0 1rem;
-    max-width: 95vw;
-  }
-`;
+const LOCAL_STORAGE_KEY = 'storage-myNotes';
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(initialNotes);
   const [editing, setEditing] = useState(false);
   const [currentNote, setCurrentNote] = useState({
-    title: "",
-    body: "",
-    id: ""
+    title: '',
+    body: '',
+    id: ''
   });
 
   useEffect(() => {
@@ -44,15 +28,15 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
   }, [notes]);
 
-  const addNewNote = note => {
+  const addNewNote = (note) => {
     setNotes([...notes, note]);
   };
 
-  const deleteNote = id => {
-    setNotes(notes.filter(note => note.id !== id));
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
   };
 
-  const editNote = note => {
+  const editNote = (note) => {
     const { title, body, id } = note;
 
     setEditing(true);
@@ -65,7 +49,7 @@ function App() {
 
   const updateNote = (id, updatedNote) => {
     setEditing(false);
-    setNotes(notes.map(note => (note.id === id ? updatedNote : note)));
+    setNotes(notes.map((note) => (note.id === id ? updatedNote : note)));
   };
 
   return (
@@ -75,11 +59,7 @@ function App() {
       </Header>
       <Main>
         {editing ? (
-          <Modal
-            currentNote={currentNote}
-            updateNote={updateNote}
-            setEditing={setEditing}
-          />
+          <Modal currentNote={currentNote} updateNote={updateNote} />
         ) : null}
         <Form addNewNote={addNewNote} />
         <List notes={notes} deleteNote={deleteNote} editNote={editNote} />

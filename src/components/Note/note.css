@@ -1,9 +1,9 @@
 .delete-button {
-  background-image: url("../assets/delete-black.png");
+  background-image: url('../../assets/delete-black.png');
 }
 
 .edit-button {
-  background-image: url("../assets/edit-black.png");
+  background-image: url('../../assets/edit-black.png');
 }
 
 .note:hover {
