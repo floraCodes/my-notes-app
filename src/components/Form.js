@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import uuid from "uuid/v4";
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import uuid from 'uuid/v4';
 
-import Error from "./Error";
+import Error from './Error';
 
 const FormContainer = styled.div`
   justify-self: center;
@@ -39,8 +39,8 @@ const FormElement = styled.form`
     padding: 0.5rem;
     border: none;
     resize: none;
-    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-      "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+      'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
   & .buttonContainer {
     text-align: right;
@@ -71,15 +71,15 @@ const FormElement = styled.form`
 
 const Form = ({ addNewNote }) => {
   const [note, setNote] = useState({
-    title: "",
-    body: "",
-    id: ""
+    title: '',
+    body: '',
+    id: ''
   });
   const { title, body } = note;
 
   const [error, setError] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setNote({
@@ -88,7 +88,7 @@ const Form = ({ addNewNote }) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title && !body) {
@@ -100,9 +100,9 @@ const Form = ({ addNewNote }) => {
     addNewNote(note);
 
     setNote({
-      title: "",
-      body: "",
-      id: ""
+      title: '',
+      body: '',
+      id: ''
     });
   };
 
@@ -110,29 +110,27 @@ const Form = ({ addNewNote }) => {
     <FormContainer>
       {error ? <Error message="You must complete at least one field" /> : null}
       <FormElement onSubmit={handleSubmit}>
-        <label htmlFor="note-title">
-          <input
-            type="text"
-            id="note-title"
-            className="note-title"
-            placeholder="Title..."
-            name="title"
-            value={title}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="note-body">
-          <textarea
-            type="text"
-            id="note-body"
-            className="note-body"
-            placeholder="Create a note..."
-            name="body"
-            value={body}
-            onChange={handleChange}
-          />
-        </label>
-        <button className="create-button" type="submit">
+        <input
+          type="text"
+          aria-label="note-title"
+          className="note-title"
+          placeholder="Title..."
+          name="title"
+          value={title}
+          onChange={handleChange}
+        />
+
+        <textarea
+          type="text"
+          aria-label="note-body"
+          className="note-body"
+          placeholder="Create a note..."
+          name="body"
+          value={body}
+          onChange={handleChange}
+        />
+
+        <button className="create-button" type="submit" aria-label="Add note">
           <span>+</span>
         </button>
       </FormElement>
